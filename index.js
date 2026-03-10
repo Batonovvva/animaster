@@ -1,6 +1,7 @@
 addListeners();
 
 function addListeners() {
+    let stopHeart = null
     const animaster_instance = animaster();
     document.getElementById('fadeInPlay')
         .addEventListener('click', function () {
@@ -52,9 +53,13 @@ function addListeners() {
     document.getElementById('heartBeatingPlay')
         .addEventListener('click', function () {
             const block = document.getElementById('heartBeatingBlock');
-            animaster_instance.heartBeating(block, 1000);
+            stopHeart = animaster_instance.heartBeating(block, 1000);
         })
 
+    document.getElementById('heartBeatingStop')
+        .addEventListener('click', function () {
+            stopHeart.stop();
+        })
 }
 
 function getTransform(translation, ratio) {
